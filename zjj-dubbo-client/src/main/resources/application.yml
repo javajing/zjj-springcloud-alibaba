@@ -1,0 +1,36 @@
+server: 
+  port: 9001
+
+spring:
+  profiles:
+    active: ${deploy.type}
+  application:
+    name: app-zjj-dubbo-client
+
+logging:
+  config: classpath:logback-spring.xml
+
+dubbo:
+  application:
+    #当前服务/应用的名字
+    name: zjj-dubbo-client
+    #qos配置开启,qos是Dubbo的在线运维命令(如telnet)，可以对服务进行动态的配置、控制及查询
+    qos-enable: true
+    #启动QoS绑定的端口,默认为22222,这里改为2223避免和服务端dubbo的qos端口冲突
+    qos-port: 2223
+    #是否允许远程访问
+    qos-accept-foreign-ip: false
+  registry:
+    #注册中心的协议和地址
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  protocol:
+    #通信规则（通信协议和接口）
+    name: dubbo
+    port: 20881
+  monitor:
+    #连接监控中心
+    protocol: registry
+  scan:
+  #开启包扫描，可替代 @EnableDubbo 注解
+  #base-packages: com.wh.zjj.provider.service

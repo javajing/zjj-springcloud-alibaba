@@ -1,0 +1,36 @@
+server: 
+  port: 8001
+
+logging:
+  config: classpath:logback-spring.xml
+
+spring:
+  application:
+    name: app-zjj-dubbo-server
+  profiles:
+    active: ${deploy.type}
+    include: common
+  datasource:
+    url: jdbc:mysql://localhost:3306/cloudDB01?characterEncoding=UTF-8&useSSL=false&connectTimeout=2000&socketTimeout=10000
+    username: root
+    password: root
+
+
+dubbo:
+  application:
+    #当前服务/应用的名字
+    name: zjj-dubbo-server
+  registry:
+    #注册中心的协议和地址
+    protocol: zookeeper
+    address: 127.0.0.1:2181
+  protocol:
+    #通信规则（通信协议和接口）
+    name: dubbo
+    port: 20880
+  monitor:
+    #连接监控中心
+    protocol: registry
+  scan:
+    #开启包扫描，可替代 @EnableDubbo 注解
+    #base-packages: com.wh.zjj.provider.service
