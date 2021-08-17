@@ -12,7 +12,7 @@ SpringCloud最新组件整合以及整合SpringCloudAlibaba组件的场景案例
 降级  
 熔断
 
-3.整合sleuth+zipkin  
+3.整合(sleuth+zipkin)或者(skywalking)
 链路监控追踪  
 链路可视化
 
@@ -24,6 +24,7 @@ SpringCloud最新组件整合以及整合SpringCloudAlibaba组件的场景案例
 服务路由  
 服务断言  
 服务过滤
+服务授权
 
 6.整合stream  
 官方kafka,rabbitMq  
